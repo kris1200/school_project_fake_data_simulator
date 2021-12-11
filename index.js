@@ -69,7 +69,6 @@ function generateFakeData(input_yes_value, input_no_value, input_tulsi_value, in
     for (let i = 1; i <= 100; i++) {
         dates.push(fakes_dates[a]);
         if (i && (i % 20 === 0)) {
-            console.log(i);
             a++;
         }
     }
@@ -105,7 +104,6 @@ function generateFakeData(input_yes_value, input_no_value, input_tulsi_value, in
     /* ****************************** */
     let random_responses = yeses.concat(nos);
     random_responses = shuffle(random_responses);
-    console.log(random_responses);
     /* ****************************** */
 
     /* ****************************** */
@@ -189,8 +187,6 @@ generate.addEventListener("click", () => {
     if ((input_yes_value + input_no_value) !== 100) {
         alert("The numbers entered in the first two input fields should add up to 100");
     } else if ((input_tulsi_value + input_neem_value + input_aloevera_value + input_ashwagandha_value + input_other_value) != input_yes_value) {
-        console.logbtnExportToCsv((input_tulsi_value + input_neem_value + input_aloevera_value + input_ashwagandha_value + input_other_value));
-        console.log(input_yes_value);
         alert(`The numbers entered in the fields "Tulsi", "Neem", "Aloevera", "Ashwagandha", and "Other" should add up to the number entered in the "Yes" input field`);
     } else {
         generateFakeData(input_yes_value, input_no_value, input_tulsi_value, input_neem_value, input_aloevera_value, input_ashwagandha_value, input_other_value);
