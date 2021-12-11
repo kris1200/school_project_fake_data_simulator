@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=DM+Sans:wght@500&family=Lobster+Two:ital,wght@0,700;1,700&family=Lora:ital,wght@0,400;1,500&family=Righteous&family=Source+Serif+Pro&family=Yanone+Kaffeesatz:wght@300&display=swap");
+#table_container_parent {
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#table_container {
+    width: 90%;
+    overflow-x: auto;
+}
+
+#dataTable {
+    border-collapse: collapse;
+    font-size: 1.5rem;
+    background-image: linear-gradient( 340deg, rgba(44, 187, 80, 1) 19%, rgba(14, 180, 217, 1) 99%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    border-radius: 10px;
+    width: 100%;
+}
+
+#dataTable thead {
+    font-family: "Bree Serif", serif;
+    border-bottom: 3px dashed black;
+    text-align: center;
+}
+
+#dataTable thead th {
+    padding-left: 1vh;
+    padding-right: 1vh;
+}
+
+th {
+    padding: 2%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+td {
+    text-align: center;
+    white-space: nowrap;
+    font-family: "Crimson Pro", serif;
+}
+
+
+/* ***************************************** */
+
+
+/********************** || Inputs styling part || **********************/
+
+#inputs_container {
+    font-family: "Source Serif Pro", serif;
+    font-size: 1rem;
+    color: green;
+}
+
+#inputs_container input:focus {
+    background-color: lightgreen;
+    transition: 0.5s;
+}
+
+#width_limiter {
+    /* background-color: red; */
+    width: 90%;
+}
+
+
+/* ********************************************************************* */
+
+
+/********************* Other *******************************/
+
+#table_note {
+    font-family: "Crimson Pro", serif;
+    font-size: 1.5rem;
+    background: -webkit-linear-gradient( 340deg, rgba(144, 18, 149, 1) 5%, rgba(6, 247, 212, 1) 97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 100%;
+    text-align: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+
+/* ****************************************************** */
+
+
+/* ********************************************************** */
+
+@media (min-width: 640px) {
+    #table_container {
+        width: 90%;
+    }
+    #width_limiter {
+        width: 90%;
+    }
+    #table_note {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+    #table_container {
+        width: 70%;
+    }
+    #width_limiter {
+        width: 70%;
+    }
+    #table_note {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+}
+
+@media (min-width: 1280.2px) {
+    #table_container {
+        width: 60%;
+    }
+    #width_limiter {
+        width: 60%;
+    }
+    #table_note {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}

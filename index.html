@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake data simulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="inputs_container" class="d-flex flex-column align-items-center mt-5 mb-5">
+        <div id="width_limiter">
+
+            <form action="#" id="form">
+                <label for="input_yes" class="form-label d-inline">Number of people with the response type <span
+                        class="fw-bolder">Yes</span> : </label>
+                <input id="input_yes" class="form-control d-inline mb-3" type="number" min="0" max="100" required value="60">
+                <label for="input_no" class="form-label d-inline">Number of people with the response type <span
+                        class="fw-bolder">No</span> : </label>
+                <input id="input_no" class="form-control d-inline mb-3" type="number" min="0" max="100" required value="40">
+
+                <p>For people with the response type <span class="fw-bolder">Yes</span>, enter the number of each of these plant types you would like to associate randomly: </p>
+                <div class="d-flex justify-content-center"><span class="me-3">Tulsi:</span> <input type="text" id="input_tulsi" class="form-control d-inline mb-2" required value="10"></div>
+                <div class="d-flex justify-content-center"><span class="me-3">Neem:</span> <input type="text" id="input_neem" class="form-control d-inline mb-2" required value="10"></div>
+                <div class="d-flex justify-content-center"><span class="me-3">Aloevera:</span> <input type="text" id="input_aloevera" class="form-control d-inline mb-2" required value="10"></div>
+                <div class="d-flex justify-content-center"><span class="me-3">Ashwagandha:</span> <input type="text" id="input_ashwagandha" class="form-control d-inline mb-2" required value="10"></div>
+                <div class="d-flex justify-content-center"><span class="me-3">Other:</span> <input type="text" id="input_other" class="form-control d-inline mb-2" required value="20"></div>
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" id="generate" class="btn btn-outline-success">Generate Fake Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="table_container_parent" class="d-none">
+        <p id="table_note">Fake data generated successfully! This is how your excel sheet will look like (ignore the table's background color): </p>
+        <div id="button_container" class="d-flex justify-content-center mt-3">
+            <button id="btnExportToCsv" type="button" class="button btn btn-outline-dark mb-3 mt-3 d-none">Export to CSV</button>
+        </div>
+        <div id="table_container">
+            <table id="dataTable" class="table">
+                <thead>
+                    <th>Sr. No</th>
+                    <th>Submission Date</th>
+                    <th>Your name</th>
+                    <th>Do you have any medicinal plants at home?</th>
+                    <th>If yes, then which of the following plants?</th>
+                </thead>
+                <tbody id="tbody">
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const dataTable = document.getElementById("dataTable");
+        const btnExportToCsv = document.getElementById("btnExportToCsv");
+
+        btnExportToCsv.addEventListener("click", () => {
+            const exporter = new TableCSVExporter(dataTable);
+            const csvOutput = exporter.convertToCSV();
+            const csvBlob = new Blob([csvOutput], {
+                type: "text/csv"
+            });
+            const blobUrl = URL.createObjectURL(csvBlob);
+            const anchorElement = document.createElement("a");
+
+            anchorElement.href = blobUrl;
+            anchorElement.download = "table-export.csv";
+            anchorElement.click();
+
+            setTimeout(() => {
+                URL.revokeObjectURL(blobUrl);
+            }, 500);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="fake_data.js"></script>
+    <script src="converter.js"></script>
+    <script src="index.js"></script>
+
+</body>
+
+</html>
