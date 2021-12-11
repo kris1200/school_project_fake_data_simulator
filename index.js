@@ -185,9 +185,7 @@ generate.addEventListener("click", () => {
     var input_aloevera_value = Number(input_aloevera.value);
     var input_ashwagandha_value = Number(input_ashwagandha.value);
     var input_other_value = Number(input_other.value);
-    tbody.innerHTML = "";
-    table_container_parent.classList.remove("d-none");
-    btnExportToCsv.classList.remove("d-none");
+
     if ((input_yes_value + input_no_value) !== 100) {
         alert("The numbers entered in the first two input fields should add up to 100");
     } else if ((input_tulsi_value + input_neem_value + input_aloevera_value + input_ashwagandha_value + input_other_value) != input_yes_value) {
@@ -196,5 +194,8 @@ generate.addEventListener("click", () => {
         alert(`The numbers entered in the fields "Tulsi", "Neem", "Aloevera", "Ashwagandha", and "Other" should add up to the number entered in the "Yes" input field`);
     } else {
         generateFakeData(input_yes_value, input_no_value, input_tulsi_value, input_neem_value, input_aloevera_value, input_ashwagandha_value, input_other_value);
+        tbody.innerHTML = "";
+        table_container_parent.classList.remove("d-none");
+        btnExportToCsv.classList.remove("d-none");
     }
 });
